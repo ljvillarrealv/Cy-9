@@ -4,7 +4,9 @@
     "cypress-xpath": "^2.0.1"
   },
 "scripts": {
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cy:chrome":"cypress run --browser chrome",
+    "cy:edge":"cypress run --browser edge"
   }
 
  
