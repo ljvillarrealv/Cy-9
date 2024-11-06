@@ -1,0 +1,64 @@
+[33mcommit 69480049cf88a2fbc526ab1cea7f4f0ec8c76355[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Luis J Villarreal <40896595+ljvillarrealv@users.noreply.github.com>
+Date:   Sat Nov 2 22:58:18 2024 -0500
+
+    Delete cypress/integration/2-advanced-examples/local_storage.spec.js
+
+[1mdiff --git a/cypress/integration/2-advanced-examples/local_storage.spec.js b/cypress/integration/2-advanced-examples/local_storage.spec.js[m
+[1mdeleted file mode 100644[m
+[1mindex 534d8bd..0000000[m
+[1m--- a/cypress/integration/2-advanced-examples/local_storage.spec.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,52 +0,0 @@[m
+[31m-/// <reference types="cypress" />[m
+[31m-[m
+[31m-context('Local Storage', () => {[m
+[31m-  beforeEach(() => {[m
+[31m-    cy.visit('https://example.cypress.io/commands/local-storage')[m
+[31m-  })[m
+[31m-  // Although local storage is automatically cleared[m
+[31m-  // in between tests to maintain a clean state[m
+[31m-  // sometimes we need to clear the local storage manually[m
+[31m-[m
+[31m-  it('cy.clearLocalStorage() - clear all data in local storage', () => {[m
+[31m-    // https://on.cypress.io/clearlocalstorage[m
+[31m-    cy.get('.ls-btn').click().should(() => {[m
+[31m-      expect(localStorage.getItem('prop1')).to.eq('red')[m
+[31m-      expect(localStorage.getItem('prop2')).to.eq('blue')[m
+[31m-      expect(localStorage.getItem('prop3')).to.eq('magenta')[m
+[31m-    })[m
+[31m-[m
+[31m-    // clearLocalStorage() yields the localStorage object[m
+[31m-    cy.clearLocalStorage().should((ls) => {[m
+[31m-      expect(ls.getItem('prop1')).to.be.null[m
+[31m-      expect(ls.getItem('prop2')).to.be.null[m
+[31m-      expect(ls.getItem('prop3')).to.be.null[m
+[31m-    })[m
+[31m-[m
+[31m-    cy.get('.ls-btn').click().should(() => {[m
+[31m-      expect(localStorage.getItem('prop1')).to.eq('red')[m
+[31m-      expect(localStorage.getItem('prop2')).to.eq('blue')[m
+[31m-      expect(localStorage.getItem('prop3')).to.eq('magenta')[m
+[31m-    })[m
+[31m-[m
+[31m-    // Clear key matching string in Local Storage[m
+[31m-    cy.clearLocalStorage('prop1').should((ls) => {[m
+[31m-      expect(ls.getItem('prop1')).to.be.null[m
+[31m-      expect(ls.getItem('prop2')).to.eq('blue')[m
+[31m-      expect(ls.getItem('prop3')).to.eq('magenta')[m
+[31m-    })[m
+[31m-[m
+[31m-    cy.get('.ls-btn').click().should(() => {[m
+[31m-      expect(localStorage.getItem('prop1')).to.eq('red')[m
+[31m-      expect(localStorage.getItem('prop2')).to.eq('blue')[m
+[31m-      expect(localStorage.getItem('prop3')).to.eq('magenta')[m
+[31m-    })[m
+[31m-[m
+[31m-    // Clear keys matching regex in Local Storage[m
+[31m-    cy.clearLocalStorage(/prop1|2/).should((ls) => {[m
+[31m-      expect(ls.getItem('prop1')).to.be.null[m
+[31m-      expect(ls.getItem('prop2')).to.be.null[m
+[31m-      expect(ls.getItem('prop3')).to.eq('magenta')[m
+[31m-    })[m
+[31m-  })[m
+[31m-})[m
