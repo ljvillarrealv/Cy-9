@@ -28,4 +28,6 @@ describe('Pruebas API´s con Cypress', () =>{
         .should('have.property','title', 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit')
 
     })
+
+    it('El POST request funciona correctamente para el endpoind')
 })
